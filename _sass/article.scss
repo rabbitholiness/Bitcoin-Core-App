@@ -101,6 +101,18 @@ article {
         }
     }
 
+    ol li code,
+    ul li code,
+    p code {
+        background-color: var(--neutral-2);
+        padding: 2px 5px 2px 5px;
+        width: 100%;
+        overflow-x: hidden;
+        font-family: $fonts;
+        font-size: 18px;
+        border-radius: 3px;
+    }
+
     ol, ul {
         margin: 10px 0 0 0;
         padding: 0 0 0 20px;

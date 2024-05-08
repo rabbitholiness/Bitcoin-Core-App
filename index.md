@@ -58,8 +58,10 @@ The current application only includes a simple [onboarding process]({{ '/first-u
 - Older Android devices may not allow you to install the application
 - If the application crashes on start, see if you have a bitcoin.conf file and all settings it contains are correct
 - Pull requests are likely set to signet, the switch to mainnet will come soon
+- To ensure you see the onboarding flow, start the application with ```-resetguisettings```
 
 #### Test the latest code
+
 This is the latest code that has been reviewed and merged code, but not a milestone, tag, or release.
 - Log in to GitHub
 - Navigate to the [Actions page](https://github.com/bitcoin-core/gui-qml/actions?query=is%3Asuccess){:target="_blank"}
@@ -70,7 +72,7 @@ This is the latest code that has been reviewed and merged code, but not a milest
 
 There are two things you might need to do before you can run the application.
 
-If MacOS sees the downloaded file as a document and not as an application, run this code in the Terminal (in the folder you downloadd the file to):
+If MacOS sees the downloaded file as a document and not as an application, run this code in the Terminal (in the folder you download the file to):
 
 	chmod +x ./bitcoin-qt
 
