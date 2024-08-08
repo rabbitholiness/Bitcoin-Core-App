@@ -112,11 +112,3 @@ If a matching payment request could be identified, that information is also show
 %}
 
 Also note the point in the [receive]({{ '/milestones/1-6-receive/' | relative_url }}) page, about how transactions and payment requests share the same basic layout.
-
-#### To-dos
-
-- Fee bump interaction flow
-- Cancel transaction flow
-- Indicator for address re-use
-- Clarify how payment request info is shown on the transaction page
-- Mock-up various transaction states, to show color and shape coding
