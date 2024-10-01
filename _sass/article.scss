@@ -181,4 +181,15 @@ article {
             font-size: 18px;
         }
     }
+
+    hr {
+        border-width: 0;
+        appearance: none;
+        border-top: 1px solid var(--neutral-4);
+        margin-top: 30px;
+
+        & + * {
+            margin-top: 30px;
+        }
+    }
 }

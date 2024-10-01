@@ -124,3 +124,9 @@ On desktop, users can also directly access various options through the applicati
 %}
 
 Everything on this page is a work-in-progress.
+
+---
+
+Related & archived
+- [Revisit use of fullscreen animation on desktop](https://github.com/BitcoinDesign/Bitcoin-Core-App/issues/80)
+- [Revisit use of drawers and dialogs](https://github.com/BitcoinDesign/Bitcoin-Core-App/issues/81)
