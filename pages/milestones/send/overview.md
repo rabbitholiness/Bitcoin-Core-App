@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Overview
+title: 1.7 Send
 permalink: /milestones/send/overview
 nav_order: 170
 header: true
