@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 1.7 Send
-permalink: /milestones/send/overview
+permalink: /milestones/1-7-send/
 nav_order: 170
 header: true
 ---
