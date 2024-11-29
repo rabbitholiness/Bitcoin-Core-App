@@ -10,11 +10,182 @@ indent: true
 
 **Status: Early design exploration**
 
-The basic send flow contains the following features:
+## Overview
 
-- Paste address
-- Add note to self
-- etc.
+From a user's perspective, the send flow consists of three basic steps:
+
+1. Enter the transaction information
+1. Review & sign the transaction
+1. Broadcast the transaction to the bitcoin network
+
+## Send form
+
+On the send form users specify the details of the transaction. They can do this in a few different ways:
+
+- Fill out the form manually
+- Click on an invoice URI link
+- Paste an invoice from the clipboard
+- Scan a QR code
+- Import the invoice from a file. Either via drag and drop or by selecting a file.
+
+{% include picture.html
+	image = "/assets/images/send/send-form-empty.png"
+	retina = "/assets/images/send/send-form-empty@2x.png"
+	big = "/assets/images/send/send-form-empty-big.png"
+	alt-text = "Send screen with everything filled out"
+	width = 800
+	height = 551
+%}
+
+The goal is to keep the primary screen simple and focused for regular transactions, and hide less frequently used options in the menu, accessed easily via the ellipsis button.
 
 
-There is a lot missing from these designs, but they should provide a good foundation to build on.
+{% include picture.html
+	image = "/assets/images/send/send-form-menu.png"
+	retina = "/assets/images/send/send-form-menu@2x.png"
+	big = "/assets/images/send/send-form-menu-big.png"
+	alt-text = "Overlay menu with send screen options"
+	width = 800
+	height = 551
+%}
+
+After all the information has been provided, the screen looks like this.
+
+{% include picture.html
+	image = "/assets/images/send/send-form-filled.png"
+	retina = "/assets/images/send/send-form-filled@2x.png"
+	big = "/assets/images/send/send-form-filled-big.png"
+	alt-text = "Send screen with everything filled out"
+	width = 800
+	height = 551
+%}
+
+#### Clipboard detection
+
+To make it easier for users to fill out the form, the application automatically detects if payment information is saved on user's clipboard. Specifically, the following types of information are detected: 
+
+1. A full invoice (URI format)
+1. A bitcoin address
+
+{% include picture.html
+	image = "/assets/images/send/clipboard-detection.png"
+	retina = "/assets/images/send/clipboard-detection@2x.png"
+	big = "/assets/images/send/clipboard-detection-big.png"
+	alt-text = "Send screen with an info message that the user has a bitcoin invoice on their clipboard."
+	width = 800
+	height = 551
+%}
+
+#### Additional information
+
+Payment requests can contain additional information that the recipient wants the sender to know, such as a personal message or their name. Check out the [receive]({{ '/milestones/1-6-receive/' | relative_url }}) page for how this works.
+
+If such information is present in the payment request, it is displayed at the top of the form. Note that the additional information will not be included in the transaction data.
+
+{% include picture.html
+	image = "/assets/images/send/additional-information.png"
+	retina = "/assets/images/send/additional-information@2x.png"
+	big = "/assets/images/send/additional-information-big.png"
+	alt-text = "Filled out send screen with a message from the recipient."
+	width = 800
+	height = 551
+%}
+
+Note that when importing a payment request, the address cannot be changed manually.
+
+#### Validation errors
+
+{% include picture.html
+	image = "/assets/images/send/validation-errors.png"
+	retina = "/assets/images/send/validation-errors@2x.png"
+	big = "/assets/images/send/validation-errors-big.png"
+	alt-text = "Filled out send screen with a message from the recipient."
+	width = 800
+	height = 551
+%}
+
+
+## Review transaction
+
+Before the transaction is broadcast, the user has another chance to review it.
+
+{% include picture.html
+	image = "/assets/images/send/review-modal.png"
+	retina = "/assets/images/send/review-modal@2x.png"
+	big = "/assets/images/send/review-modal-big.png"
+	alt-text = "Screen showing the transaction details."
+	width = 800
+	height = 551
+%}
+
+## Transaction confirmation
+
+After the transaction has been broadcast to the network, a success message is displayed. 
+
+{% include picture.html
+	image = "/assets/images/send/confirmation-message.png"
+	retina = "/assets/images/send/confirmation-message@2x.png"
+	big = "/assets/images/send/confirmation-message-big.png"
+	alt-text = "Confirmation screen with a success message."
+	width = 800
+	height = 551
+%}
+
+#### Error handling
+
+There are scenarios in which the broadcasting of a transaction fails.
+
+{% include picture.html
+	image = "/assets/images/send/error-message.png"
+	retina = "/assets/images/send/error-message@2x.png"
+	big = "/assets/images/send/error-message-big.png"
+	alt-text = "Confirmation screen with an error message."
+	width = 800
+	height = 551
+%}
+
+## Replace-By-Fee
+
+If Replace-By-Fee (RBF) is enabled, users can edit a transaction as long as it has not been confirmed by the network yet. There are two main use cases for this feature: 
+
+- accelerate the transactions
+- cancel the transaction
+
+{% include picture.html
+	image = "/assets/images/send/rbf.png"
+	retina = "/assets/images/send/rbf@2x.png"
+	big = "/assets/images/send/rbf-big.png"
+	alt-text = "Transaction detail screen with a countdown and editing options."
+	width = 800
+	height = 712
+%}
+
+In all cases, the initial transaction gets replaced with a new transaction that has a higher fee then the initial one. The new transaction will be confirmed first, which in turn invalidates the original transaction.
+
+#### Accelerate transaction
+
+Based on the fee selected in the initial transaction, users have a differenet timeframe available to edit a transaction. The application displays a countdown with an estimated confirmation time to let users know how much time they have.
+
+{% include picture.html
+	image = "/assets/images/send/rbf-accelerate.png"
+	retina = "/assets/images/send/rbf-accelerate@2x.png"
+	big = "/assets/images/send/rbf-accelerate-big.png"
+	alt-text = "Overlay screen for cancelling the transaction."
+	width = 800
+	height = 712
+%}
+
+When accelerating transactions, users only need select the new fee option or set a custom fee rate. By default, the application chooses the highest fee from the fee option.
+
+#### Cancel transaction
+
+If a user chooses to cancel a transaction, the application replaces the initial transaction with new transaction that spends the funds back into their own wallet. 
+
+{% include picture.html
+	image = "/assets/images/send/rbf-cancel.png"
+	retina = "/assets/images/send/rbf-cancel@2x.png"
+	big = "/assets/images/send/rbf-cancel-big.png"
+	alt-text = "Overlay screen for cancelling the transaction."
+	width = 800
+	height = 712
+%}
