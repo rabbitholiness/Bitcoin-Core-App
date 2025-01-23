@@ -1,8 +1,8 @@
 ---
 layout: default
 title: Coin selection
-permalink: /milestones/1-7-send/coin-selection
-nav_order: 174
+permalink: /send/coin-selection/
+nav_order: 175
 indent: true
 ---
 

@@ -1,8 +1,8 @@
 ---
 layout: default
 title: Multiple keys
-permalink: /milestones/1-7-send/multiple-keys
-nav_order: 176
+permalink: /send/multiple-keys/
+nav_order: 202
 indent: true
 ---
 
