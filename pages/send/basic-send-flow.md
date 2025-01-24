@@ -118,19 +118,6 @@ Before the transaction is broadcast, the user has another chance to review it.
 	height = 551
 %}
 
-## Transaction confirmation
-
-After the transaction has been broadcast to the network, a success message is displayed. 
-
-{% include picture.html
-	image = "/assets/images/send/confirmation-message.png"
-	retina = "/assets/images/send/confirmation-message@2x.png"
-	big = "/assets/images/send/confirmation-message-big.png"
-	alt-text = "Confirmation screen with a success message."
-	width = 800
-	height = 551
-%}
-
 #### Error handling
 
 There are scenarios in which the broadcasting of a transaction fails.
