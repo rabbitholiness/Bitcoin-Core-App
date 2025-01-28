@@ -93,7 +93,10 @@ If such information is present in the payment request, it is displayed at the to
 
 Note that when importing a payment request, the address cannot be changed manually.
 
-#### Validation errors
+#### Inline validation & error handling
+
+The application uses inline validation checks in many input fields to reduce errors and alert users to potential unintended consequences. Learn more on the [send form inputs page]({{ '/send/send-form-input-fields/' | relative_url }})
+
 
 {% include picture.html
 	image = "/assets/images/send/validation-errors.png"
