@@ -10,7 +10,15 @@ indent: true
 
 **Status: Early design exploration**
 
+Our application uses inline validation checks in many form fields to minimize errors. These checks fall into two categories: warnings and errors.
+
+**Warnings** inform users of potential issues but still allow them to proceed. They encourage informed decisions, such as when a user pastes a legacy address type or sets an unusually low or high transaction fee.
+
+**Errors** block users from proceeding due to invalid or unprocessable inputs, like entering a transaction ID into the address field.
+
 ## Address
+
+To improve readability and address verification, the address input field formats bitcoin addresses into chunks of four characters each. 
 
 {% include picture.html
 	image = "/assets/images/send/send-inputs-address.png"
@@ -21,8 +29,18 @@ indent: true
 	height = 815
 %}
 
+Inline validation checks include:
+
+- Sending to Own/Loaded Wallet: Info - Sending to [Wallet name]
+- Legacy Address: Warning - Support for legacy addresses may be deprecated in certain wallets.
+- Taproot Address: Warning - Taproot addresses may not be widely supported across wallets or exchanges.
+- Lightning address: Error – Cannot pay Lightning invoices.
+- Wrong Format: Error – This is not a valid Bitcoin address.
+- Potentially more
 
 ## Amount
+
+The transaction amount can be entered in two denominations: bitcoins or Satoshis. Users also have the option to send the full wallet balance. 
 
 {% include picture.html
 	image = "/assets/images/send/send-inputs-amount.png"
@@ -32,6 +50,12 @@ indent: true
 	width = 800
 	height = 627
 %}
+
+Inline validation checks include:
+
+- Insufficient Balance: Error – Not enough funds to complete the transaction.
+- Full Send: Warning – You are sending your entire balance.
+- Potentially more
 
 ## Note to self
 
@@ -48,7 +72,7 @@ The note to self is recommended for each transaction. It can have up to 255 char
 
 ## Fee selection
 
-By default the application lets users choose between three standard fee options which are based on different confirmation speeds. 
+The application offers three standard fee options, each corresponding to a different confirmation speed. In rare cases where all three options have the same fee, the fastest option is selected by default.
 
 ### Standard fee
 {% include picture.html
@@ -62,7 +86,7 @@ By default the application lets users choose between three standard fee options 
 
 ### Custom fees
 
-Users can set a custom fee by enabling the custom fee option in the send options dropdown. The default value is set to the same value as the default option in the standard selection.
+Users can enable the custom fee option from the send options dropdown. By default, the custom fee field is pre-filled with the value of the default option in the standard fee selection.
 
 {% include picture.html
 	image = "/assets/images/send/send-form-custom-fee.png"
@@ -73,7 +97,7 @@ Users can set a custom fee by enabling the custom fee option in the send options
 	height = 366
 %}
 
-Users can run into special scenarios when setting a custom fee. They could, for example, try to enter a very low or extremely high. In both cases, the application shows a warning message to help users make an informed decision. 
+Special scenarios may arise when setting custom fees. For example, entering a very low or extremely high fee triggers a warning message, guiding users to make informed choices.
 
 {% include picture.html
 	image = "/assets/images/send/send-inputs-fee-custom.png"
@@ -83,3 +107,9 @@ Users can run into special scenarios when setting a custom fee. They could, for 
 	width = 800
 	height = 718
 %}
+
+Inline validation checks include:
+
+- Low fee: Warning - This is a very low fee. It might result in the transaction never confirming.
+- High fee: Warning - You are overpaying by [x] sat/vbyte
+- Below confirmation limit: Error - The fee is below confirmation limit
