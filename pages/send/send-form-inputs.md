@@ -38,6 +38,15 @@ Inline validation checks include:
 - Wrong Format: Error – This is not a valid Bitcoin address.
 - Potentially more
 
+{% include picture.html
+	image = "/assets/images/send/layout-blocks-address.png"
+	retina = "/assets/images/send/layout-blocks-address@2x.png"
+	big = "/assets/images/send/layout-blocks-address-big.png"
+	alt-text = "Layout blocks of the address input component."
+	width = 800
+	height = 703
+%}
+
 ## Amount
 
 The transaction amount can be entered in two denominations: bitcoins or Satoshis. Users also have the option to send the full wallet balance. 
@@ -57,6 +66,16 @@ Inline validation checks include:
 - Full Send: Warning – You are sending your entire balance.
 - Potentially more
 
+{% include picture.html
+	image = "/assets/images/send/layout-blocks-amount.png"
+	retina = "/assets/images/send/layout-blocks-amount@2x.png"
+	big = "/assets/images/send/layout-blocks-amount-big.png"
+	alt-text = "Layout blocks of the amount input component."
+	width = 800
+	height = 1034
+%}
+
+
 ## Note to self
 
 The note to self is recommended for each transaction. It can have up to 255 characters, as recommended in [BIP-329](https://github.com/bitcoin/bips/blob/master/bip-0329.mediawiki). 
@@ -70,6 +89,16 @@ The note to self is recommended for each transaction. It can have up to 255 char
 	height = 418
 %}
 
+{% include picture.html
+	image = "/assets/images/send/layout-blocks-note.png"
+	retina = "/assets/images/send/layout-blocks-note@2x.png"
+	big = "/assets/images/send/layout-blocks-note-big.png"
+	alt-text = "Layout blocks of the note to self input component."
+	width = 800
+	height = 808
+%}
+
+
 ## Fee selection
 
 The application offers three standard fee options, each corresponding to a different confirmation speed. In rare cases where all three options have the same fee, the fastest option is selected by default.
@@ -82,6 +111,15 @@ The application offers three standard fee options, each corresponding to a diffe
 	alt-text = "List of the fee selection input field in different states."
 	width = 800
 	height = 507
+%}
+
+{% include picture.html
+	image = "/assets/images/send/layout-blocks-fees.png"
+	retina = "/assets/images/send/layout-blocks-fees@2x.png"
+	big = "/assets/images/send/layout-blocks-fees-big.png"
+	alt-text = "Layout blocks of the fee selection component."
+	width = 800
+	height = 561
 %}
 
 ### Custom fees
