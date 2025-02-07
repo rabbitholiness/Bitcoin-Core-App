@@ -121,6 +121,19 @@ Before the transaction is broadcast, the user has another chance to review it.
 	height = 551
 %}
 
+#### Transaction details
+
+After the transaction has been sent, the user sees the transaction details screen. They have the choico to create another transaction or to go to the full transaction details page in the activity section.
+
+{% include picture.html
+	image = "/assets/images/send/send-transaction-details.png"
+	retina = "/assets/images/send/send-transaction-details@2x.png"
+	big = "/assets/images/send/send-transaction-details.png"
+	alt-text = "Screen showing the transaction details."
+	width = 800
+	height = 551
+%}
+
 #### Error handling
 
 There are scenarios in which the broadcasting of a transaction fails.
